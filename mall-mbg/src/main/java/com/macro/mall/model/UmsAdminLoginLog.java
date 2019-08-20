@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class UmsAdminLoginLog implements Serializable {
-    private Long id;
+    private Long logId;
 
     private Long adminId;
 
@@ -20,12 +20,12 @@ public class UmsAdminLoginLog implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Long getId() {
-        return id;
+    public Long getLogId() {
+        return logId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setLogId(Long id) {
+        this.logId = id;
     }
 
     public Long getAdminId() {
@@ -74,7 +74,7 @@ public class UmsAdminLoginLog implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
+        sb.append(", id=").append(logId);
         sb.append(", adminId=").append(adminId);
         sb.append(", createTime=").append(createTime);
         sb.append(", ip=").append(ip);

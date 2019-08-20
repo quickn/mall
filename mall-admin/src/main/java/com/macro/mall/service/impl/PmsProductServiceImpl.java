@@ -11,11 +11,11 @@ import com.macro.mall.service.PmsProductService;
 import io.swagger.annotations.Example;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.Resource;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,39 +29,39 @@ import java.util.List;
 @Service
 public class PmsProductServiceImpl implements PmsProductService {
     private static final Logger LOGGER = LoggerFactory.getLogger(PmsProductServiceImpl.class);
-    @Autowired
+    @Resource
     private PmsProductMapper productMapper;
-    @Autowired
+    @Resource
     private PmsMemberPriceDao memberPriceDao;
-    @Autowired
+    @Resource
     private PmsMemberPriceMapper memberPriceMapper;
-    @Autowired
+    @Resource
     private PmsProductLadderDao productLadderDao;
-    @Autowired
+    @Resource
     private PmsProductLadderMapper productLadderMapper;
-    @Autowired
+    @Resource
     private PmsProductFullReductionDao productFullReductionDao;
-    @Autowired
+    @Resource
     private PmsProductFullReductionMapper productFullReductionMapper;
-    @Autowired
+    @Resource
     private PmsSkuStockDao skuStockDao;
-    @Autowired
+    @Resource
     private PmsSkuStockMapper skuStockMapper;
-    @Autowired
+    @Resource
     private PmsProductAttributeValueDao productAttributeValueDao;
-    @Autowired
+    @Resource
     private PmsProductAttributeValueMapper productAttributeValueMapper;
-    @Autowired
+    @Resource
     private CmsSubjectProductRelationDao subjectProductRelationDao;
-    @Autowired
+    @Resource
     private CmsSubjectProductRelationMapper subjectProductRelationMapper;
-    @Autowired
+    @Resource
     private CmsPrefrenceAreaProductRelationDao prefrenceAreaProductRelationDao;
-    @Autowired
+    @Resource
     private CmsPrefrenceAreaProductRelationMapper prefrenceAreaProductRelationMapper;
-    @Autowired
+    @Resource
     private PmsProductDao productDao;
-    @Autowired
+    @Resource
     private PmsProductVertifyRecordDao productVertifyRecordDao;
 
     @Override
@@ -69,10 +69,10 @@ public class PmsProductServiceImpl implements PmsProductService {
         int count;
         //创建商品
         PmsProduct product = productParam;
-        product.setId(null);
+        product.setProductId(null);
         productMapper.insertSelective(product);
         //根据促销类型设置价格：、阶梯价格、满减价格
-        Long productId = product.getId();
+        Long productId = product.getProductId();
         //会员价格
         relateAndInsertList(memberPriceDao, productParam.getMemberPriceList(), productId);
         //阶梯价格
@@ -121,7 +121,7 @@ public class PmsProductServiceImpl implements PmsProductService {
         int count;
         //更新商品信息
         PmsProduct product = productParam;
-        product.setId(id);
+        product.setProductId(id);
         productMapper.updateByPrimaryKeySelective(product);
         //会员价格
         PmsMemberPriceExample pmsMemberPriceExample = new PmsMemberPriceExample();
@@ -267,10 +267,10 @@ public class PmsProductServiceImpl implements PmsProductService {
         int count;
         //创建商品
         PmsProduct product = productParam;
-        product.setId(null);
+        product.setProductId(null);
         productMapper.insertSelective(product);
         //根据促销类型设置价格：、阶梯价格、满减价格
-        Long productId = product.getId();
+        Long productId = product.getProductId();
         //会员价格
         List<PmsMemberPrice> memberPriceList = productParam.getMemberPriceList();
         if (!CollectionUtils.isEmpty(memberPriceList)) {

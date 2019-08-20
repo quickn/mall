@@ -12,9 +12,9 @@ import com.macro.mall.model.*;
 import com.macro.mall.service.PmsProductCategoryService;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,15 +24,15 @@ import java.util.List;
  */
 @Service
 public class PmsProductCategoryServiceImpl implements PmsProductCategoryService {
-    @Autowired
+    @Resource
     private PmsProductCategoryMapper productCategoryMapper;
-    @Autowired
+    @Resource
     private PmsProductMapper productMapper;
-    @Autowired
+    @Resource
     private PmsProductCategoryAttributeRelationDao productCategoryAttributeRelationDao;
-    @Autowired
+    @Resource
     private PmsProductCategoryAttributeRelationMapper productCategoryAttributeRelationMapper;
-    @Autowired
+    @Resource
     private PmsProductCategoryDao productCategoryDao;
     @Override
     public int create(PmsProductCategoryParam pmsProductCategoryParam) {
@@ -45,7 +45,7 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
         //创建筛选属性关联
         List<Long> productAttributeIdList = pmsProductCategoryParam.getProductAttributeIdList();
         if(!CollectionUtils.isEmpty(productAttributeIdList)){
-            insertRelationList(productCategory.getId(), productAttributeIdList);
+            insertRelationList(productCategory.getProductCategoryId(), productAttributeIdList);
         }
         return count;
     }
@@ -69,12 +69,12 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
     @Override
     public int update(Long id, PmsProductCategoryParam pmsProductCategoryParam) {
         PmsProductCategory productCategory = new PmsProductCategory();
-        productCategory.setId(id);
+        productCategory.setProductCategoryId(id);
         BeanUtils.copyProperties(pmsProductCategoryParam, productCategory);
         setCategoryLevel(productCategory);
         //更新商品分类时要更新商品中的名称
         PmsProduct product = new PmsProduct();
-        product.setProductCategoryName(productCategory.getName());
+        product.setProductCategoryName(productCategory.getProductCategoryName());
         PmsProductExample example = new PmsProductExample();
         example.createCriteria().andProductCategoryIdEqualTo(id);
         productMapper.updateByExampleSelective(product,example);

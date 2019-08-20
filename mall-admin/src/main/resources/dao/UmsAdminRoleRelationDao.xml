@@ -3,7 +3,7 @@
 <mapper namespace="com.macro.mall.dao.UmsAdminRoleRelationDao">
     <!--批量新增回写主键支持-->
     <insert id="insertList">
-        INSERT INTO ums_admin_role_relation (admin_id, role_id) VALUES
+        INSERT INTO ums_admin_role_relation (adminId, roleId) VALUES
         <foreach collection="list" separator="," item="item" index="index">
             (#{item.adminId,jdbcType=BIGINT},
             #{item.roleId,jdbcType=BIGINT})
@@ -11,45 +11,45 @@
     </insert>
     <select id="getRoleList" resultMap="com.macro.mall.mapper.UmsRoleMapper.BaseResultMap">
         select r.*
-        from ums_admin_role_relation ar left join ums_role r on ar.role_id = r.id
-        where ar.admin_id = #{adminId}
+        from ums_admin_role_relation ar left join ums_role r on ar.roleId = r.roleId
+        where ar.adminId = #{adminId}
     </select>
     <select id="getRolePermissionList" resultMap="com.macro.mall.mapper.UmsPermissionMapper.BaseResultMap">
         select p.*
-        from ums_admin_role_relation ar left join ums_role r on ar.role_id = r.id
-            left join ums_role_permission_relation rp on r.id = rp.role_id
-            left join ums_permission p on rp.permission_id=p.id
-            where ar.admin_id = #{adminId} and p.id is not null
+        from ums_admin_role_relation ar left join ums_role r on ar.roleId = r.roleId
+            left join ums_role_permission_relation rp on r.roleId = rp.roleId
+            left join ums_permission p on rp.permissionId=p.permissionId
+            where ar.adminId = #{adminId} and p.permissionId is not null
     </select>
     <select id="getPermissionList" resultMap="com.macro.mall.mapper.UmsPermissionMapper.BaseResultMap">
         SELECT
             p.*
         FROM
             ums_admin_role_relation ar
-            LEFT JOIN ums_role r ON ar.role_id = r.id
-            LEFT JOIN ums_role_permission_relation rp ON r.id = rp.role_id
-            LEFT JOIN ums_permission p ON rp.permission_id = p.id
+            LEFT JOIN ums_role r ON ar.roleId = r.roleId
+            LEFT JOIN ums_role_permission_relation rp ON r.roleId = rp.roleId
+            LEFT JOIN ums_permission p ON rp.permissionId = p.permissionId
         WHERE
-            ar.admin_id = #{adminId}
-            AND p.id IS NOT NULL
-            AND p.id NOT IN (
+            ar.adminId = #{adminId}
+            AND p.permissionId IS NOT NULL
+            AND p.permissionId NOT IN (
                 SELECT
-                    p.id
+                    p.permissionId
                 FROM
                     ums_admin_permission_relation pr
-                    LEFT JOIN ums_permission p ON pr.permission_id = p.id
+                    LEFT JOIN ums_permission p ON pr.permissionId = p.permissionId
                 WHERE
                     pr.type = - 1
-                    AND pr.admin_id = #{adminId}
+                    AND pr.adminId = #{adminId}
             )
         UNION
         SELECT
             p.*
         FROM
             ums_admin_permission_relation pr
-            LEFT JOIN ums_permission p ON pr.permission_id = p.id
+            LEFT JOIN ums_permission p ON pr.permissionId = p.permissionId
         WHERE
             pr.type = 1
-            AND pr.admin_id = #{adminId}
+            AND pr.adminId = #{adminId}
     </select>
 </mapper>

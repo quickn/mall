@@ -84,7 +84,7 @@ public class UmsAdminController {
         String username = principal.getName();
         UmsAdmin umsAdmin = adminService.getAdminByUsername(username);
         Map<String, Object> data = new HashMap<>();
-        data.put("username", umsAdmin.getUsername());
+        data.put("username", umsAdmin.getUserName());
         data.put("roles", new String[]{"TEST"});
         data.put("icon", umsAdmin.getIcon());
         return CommonResult.success(data);

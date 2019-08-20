@@ -85,7 +85,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         umsAdmin.setStatus(1);
         //查询是否有相同用户名的用户
         UmsAdminExample example = new UmsAdminExample();
-        example.createCriteria().andUsernameEqualTo(umsAdmin.getUsername());
+        example.createCriteria().andUsernameEqualTo(umsAdmin.getUserName());
         List<UmsAdmin> umsAdminList = adminMapper.selectByExample(example);
         if (umsAdminList.size() > 0) {
             return null;
@@ -124,7 +124,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     private void insertLoginLog(String username) {
         UmsAdmin admin = getAdminByUsername(username);
         UmsAdminLoginLog loginLog = new UmsAdminLoginLog();
-        loginLog.setAdminId(admin.getId());
+        loginLog.setAdminId(admin.getAdminId());
         loginLog.setCreateTime(new Date());
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
@@ -171,7 +171,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 
     @Override
     public int update(Long id, UmsAdmin admin) {
-        admin.setId(id);
+        admin.setAdminId(id);
         //密码已经加密处理，需要单独修改
         admin.setPassword(null);
         return adminMapper.updateByPrimaryKeySelective(admin);

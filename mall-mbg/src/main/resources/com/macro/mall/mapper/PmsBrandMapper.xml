@@ -2,16 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.macro.mall.mapper.PmsBrandMapper">
   <resultMap id="BaseResultMap" type="com.macro.mall.model.PmsBrand">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="first_letter" jdbcType="VARCHAR" property="firstLetter" />
+    <id column="brandId" jdbcType="BIGINT" property="brandId" />
+    <result column="brandName" jdbcType="VARCHAR" property="brandName" />
+    <result column="firstLetter" jdbcType="VARCHAR" property="firstLetter" />
     <result column="sort" jdbcType="INTEGER" property="sort" />
-    <result column="factory_status" jdbcType="INTEGER" property="factoryStatus" />
-    <result column="show_status" jdbcType="INTEGER" property="showStatus" />
-    <result column="product_count" jdbcType="INTEGER" property="productCount" />
-    <result column="product_comment_count" jdbcType="INTEGER" property="productCommentCount" />
+    <result column="factoryStatus" jdbcType="INTEGER" property="factoryStatus" />
+    <result column="showStatus" jdbcType="INTEGER" property="showStatus" />
+    <result column="productCount" jdbcType="INTEGER" property="productCount" />
+    <result column="productCommentCount" jdbcType="INTEGER" property="productCommentCount" />
     <result column="logo" jdbcType="VARCHAR" property="logo" />
-    <result column="big_pic" jdbcType="VARCHAR" property="bigPic" />
+    <result column="bigPic" jdbcType="VARCHAR" property="bigPic" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.macro.mall.model.PmsBrand">
     <result column="brand_story" jdbcType="LONGVARCHAR" property="brandStory" />
@@ -75,8 +75,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, first_letter, sort, factory_status, show_status, product_count, product_comment_count, 
-    logo, big_pic
+    brandId, brandName, firstLetter, sort, factoryStatus, showStatus, productCount,
+    logo, bigPic
   </sql>
   <sql id="Blob_Column_List">
     brand_story
@@ -134,8 +134,8 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into pms_brand (name, first_letter, sort, 
-      factory_status, show_status, product_count, 
-      product_comment_count, logo, big_pic, 
+      factory_status, showStatus, productCount, 
+      logo, bigPic, 
       brand_story)
     values (#{name,jdbcType=VARCHAR}, #{firstLetter,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, 
       #{factoryStatus,jdbcType=INTEGER}, #{showStatus,jdbcType=INTEGER}, #{productCount,jdbcType=INTEGER}, 
@@ -161,19 +161,19 @@
         factory_status,
       </if>
       <if test="showStatus != null">
-        show_status,
+        showStatus,
       </if>
       <if test="productCount != null">
-        product_count,
+        productCount,
       </if>
       <if test="productCommentCount != null">
-        product_comment_count,
+       
       </if>
       <if test="logo != null">
         logo,
       </if>
       <if test="bigPic != null">
-        big_pic,
+        bigPic,
       </if>
       <if test="brandStory != null">
         brand_story,
@@ -237,10 +237,10 @@
         factory_status = #{record.factoryStatus,jdbcType=INTEGER},
       </if>
       <if test="record.showStatus != null">
-        show_status = #{record.showStatus,jdbcType=INTEGER},
+        showStatus = #{record.showStatus,jdbcType=INTEGER},
       </if>
       <if test="record.productCount != null">
-        product_count = #{record.productCount,jdbcType=INTEGER},
+        productCount = #{record.productCount,jdbcType=INTEGER},
       </if>
       <if test="record.productCommentCount != null">
         product_comment_count = #{record.productCommentCount,jdbcType=INTEGER},
@@ -249,7 +249,7 @@
         logo = #{record.logo,jdbcType=VARCHAR},
       </if>
       <if test="record.bigPic != null">
-        big_pic = #{record.bigPic,jdbcType=VARCHAR},
+        bigPic = #{record.bigPic,jdbcType=VARCHAR},
       </if>
       <if test="record.brandStory != null">
         brand_story = #{record.brandStory,jdbcType=LONGVARCHAR},
@@ -266,11 +266,11 @@
       first_letter = #{record.firstLetter,jdbcType=VARCHAR},
       sort = #{record.sort,jdbcType=INTEGER},
       factory_status = #{record.factoryStatus,jdbcType=INTEGER},
-      show_status = #{record.showStatus,jdbcType=INTEGER},
-      product_count = #{record.productCount,jdbcType=INTEGER},
+      showStatus = #{record.showStatus,jdbcType=INTEGER},
+      productCount = #{record.productCount,jdbcType=INTEGER},
       product_comment_count = #{record.productCommentCount,jdbcType=INTEGER},
       logo = #{record.logo,jdbcType=VARCHAR},
-      big_pic = #{record.bigPic,jdbcType=VARCHAR},
+      bigPic = #{record.bigPic,jdbcType=VARCHAR},
       brand_story = #{record.brandStory,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -283,11 +283,11 @@
       first_letter = #{record.firstLetter,jdbcType=VARCHAR},
       sort = #{record.sort,jdbcType=INTEGER},
       factory_status = #{record.factoryStatus,jdbcType=INTEGER},
-      show_status = #{record.showStatus,jdbcType=INTEGER},
-      product_count = #{record.productCount,jdbcType=INTEGER},
+      showStatus = #{record.showStatus,jdbcType=INTEGER},
+      productCount = #{record.productCount,jdbcType=INTEGER},
       product_comment_count = #{record.productCommentCount,jdbcType=INTEGER},
       logo = #{record.logo,jdbcType=VARCHAR},
-      big_pic = #{record.bigPic,jdbcType=VARCHAR}
+      bigPic = #{record.bigPic,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -308,10 +308,10 @@
         factory_status = #{factoryStatus,jdbcType=INTEGER},
       </if>
       <if test="showStatus != null">
-        show_status = #{showStatus,jdbcType=INTEGER},
+        showStatus = #{showStatus,jdbcType=INTEGER},
       </if>
       <if test="productCount != null">
-        product_count = #{productCount,jdbcType=INTEGER},
+        productCount = #{productCount,jdbcType=INTEGER},
       </if>
       <if test="productCommentCount != null">
         product_comment_count = #{productCommentCount,jdbcType=INTEGER},
@@ -320,7 +320,7 @@
         logo = #{logo,jdbcType=VARCHAR},
       </if>
       <if test="bigPic != null">
-        big_pic = #{bigPic,jdbcType=VARCHAR},
+        bigPic = #{bigPic,jdbcType=VARCHAR},
       </if>
       <if test="brandStory != null">
         brand_story = #{brandStory,jdbcType=LONGVARCHAR},
@@ -334,11 +334,11 @@
       first_letter = #{firstLetter,jdbcType=VARCHAR},
       sort = #{sort,jdbcType=INTEGER},
       factory_status = #{factoryStatus,jdbcType=INTEGER},
-      show_status = #{showStatus,jdbcType=INTEGER},
-      product_count = #{productCount,jdbcType=INTEGER},
+      showStatus = #{showStatus,jdbcType=INTEGER},
+      productCount = #{productCount,jdbcType=INTEGER},
       product_comment_count = #{productCommentCount,jdbcType=INTEGER},
       logo = #{logo,jdbcType=VARCHAR},
-      big_pic = #{bigPic,jdbcType=VARCHAR},
+      bigPic = #{bigPic,jdbcType=VARCHAR},
       brand_story = #{brandStory,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -348,11 +348,11 @@
       first_letter = #{firstLetter,jdbcType=VARCHAR},
       sort = #{sort,jdbcType=INTEGER},
       factory_status = #{factoryStatus,jdbcType=INTEGER},
-      show_status = #{showStatus,jdbcType=INTEGER},
-      product_count = #{productCount,jdbcType=INTEGER},
+      showStatus = #{showStatus,jdbcType=INTEGER},
+      productCount = #{productCount,jdbcType=INTEGER},
       product_comment_count = #{productCommentCount,jdbcType=INTEGER},
       logo = #{logo,jdbcType=VARCHAR},
-      big_pic = #{bigPic,jdbcType=VARCHAR}
+      bigPic = #{bigPic,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

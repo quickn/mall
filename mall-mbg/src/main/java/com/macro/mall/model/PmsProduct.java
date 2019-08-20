@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class PmsProduct implements Serializable {
-    private Long id;
+    private Long productId;
 
     private Long brandId;
 
@@ -122,12 +122,12 @@ public class PmsProduct implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Long getId() {
-        return id;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setProductId(Long id) {
+        this.productId = id;
     }
 
     public Long getBrandId() {
@@ -464,7 +464,7 @@ public class PmsProduct implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
+        sb.append(", id=").append(productId);
         sb.append(", brandId=").append(brandId);
         sb.append(", productCategoryId=").append(productCategoryId);
         sb.append(", feightTemplateId=").append(feightTemplateId);

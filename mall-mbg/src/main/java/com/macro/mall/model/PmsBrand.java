@@ -4,9 +4,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 public class PmsBrand implements Serializable {
-    private Long id;
+    private Long brandId;
 
-    private String name;
+    private String brandName;
 
     @ApiModelProperty(value = "首字母")
     private String firstLetter;
@@ -35,20 +35,20 @@ public class PmsBrand implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Long getId() {
-        return id;
+    public Long getBrandId() {
+        return brandId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setBrandId(Long id) {
+        this.brandId = id;
     }
 
-    public String getName() {
-        return name;
+    public String getBrandName() {
+        return brandName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setBrandName(String name) {
+        this.brandName = name;
     }
 
     public String getFirstLetter() {
@@ -129,8 +129,8 @@ public class PmsBrand implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", name=").append(name);
+        sb.append(", id=").append(brandId);
+        sb.append(", name=").append(brandName);
         sb.append(", firstLetter=").append(firstLetter);
         sb.append(", sort=").append(sort);
         sb.append(", factoryStatus=").append(factoryStatus);

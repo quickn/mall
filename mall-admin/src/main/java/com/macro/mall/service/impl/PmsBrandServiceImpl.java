@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -22,9 +23,9 @@ import java.util.List;
  */
 @Service
 public class PmsBrandServiceImpl implements PmsBrandService {
-    @Autowired
+    @Resource
     private PmsBrandMapper brandMapper;
-    @Autowired
+    @Resource
     private PmsProductMapper productMapper;
 
     @Override
@@ -38,7 +39,7 @@ public class PmsBrandServiceImpl implements PmsBrandService {
         BeanUtils.copyProperties(pmsBrandParam, pmsBrand);
         //如果创建时首字母为空，取名称的第一个为首字母
         if (StringUtils.isEmpty(pmsBrand.getFirstLetter())) {
-            pmsBrand.setFirstLetter(pmsBrand.getName().substring(0, 1));
+            pmsBrand.setFirstLetter(pmsBrand.getBrandName().substring(0, 1));
         }
         return brandMapper.insertSelective(pmsBrand);
     }
@@ -47,14 +48,14 @@ public class PmsBrandServiceImpl implements PmsBrandService {
     public int updateBrand(Long id, PmsBrandParam pmsBrandParam) {
         PmsBrand pmsBrand = new PmsBrand();
         BeanUtils.copyProperties(pmsBrandParam, pmsBrand);
-        pmsBrand.setId(id);
+        pmsBrand.setBrandId(id);
         //如果创建时首字母为空，取名称的第一个为首字母
         if (StringUtils.isEmpty(pmsBrand.getFirstLetter())) {
-            pmsBrand.setFirstLetter(pmsBrand.getName().substring(0, 1));
+            pmsBrand.setFirstLetter(pmsBrand.getBrandName().substring(0, 1));
         }
         //更新品牌时要更新商品中的品牌名称
         PmsProduct product = new PmsProduct();
-        product.setBrandName(pmsBrand.getName());
+        product.setBrandName(pmsBrand.getBrandName());
         PmsProductExample example = new PmsProductExample();
         example.createCriteria().andBrandIdEqualTo(id);
         productMapper.updateByExampleSelective(product,example);

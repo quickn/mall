@@ -3,18 +3,18 @@
 <mapper namespace="com.macro.mall.mapper.PmsProductMapper">
   <resultMap id="BaseResultMap" type="com.macro.mall.model.PmsProduct">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="brand_id" jdbcType="BIGINT" property="brandId" />
-    <result column="product_category_id" jdbcType="BIGINT" property="productCategoryId" />
-    <result column="feight_template_id" jdbcType="BIGINT" property="feightTemplateId" />
-    <result column="product_attribute_category_id" jdbcType="BIGINT" property="productAttributeCategoryId" />
+    <result column="brandId" jdbcType="BIGINT" property="brandId" />
+    <result column="productCategoryId" jdbcType="BIGINT" property="productCategoryId" />
+    <result column="feightTemplateId" jdbcType="BIGINT" property="feightTemplateId" />
+    <result column="productAttributeCategoryId" jdbcType="BIGINT" property="productAttributeCategoryId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="pic" jdbcType="VARCHAR" property="pic" />
     <result column="product_sn" jdbcType="VARCHAR" property="productSn" />
-    <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
-    <result column="publish_status" jdbcType="INTEGER" property="publishStatus" />
-    <result column="new_status" jdbcType="INTEGER" property="newStatus" />
-    <result column="recommand_status" jdbcType="INTEGER" property="recommandStatus" />
-    <result column="verify_status" jdbcType="INTEGER" property="verifyStatus" />
+    <result column="deleteStatus" jdbcType="INTEGER" property="deleteStatus" />
+    <result column="publishStatus" jdbcType="INTEGER" property="publishStatus" />
+    <result column="newStatus" jdbcType="INTEGER" property="newStatus" />
+    <result column="recommandStatus" jdbcType="INTEGER" property="recommandStatus" />
+    <result column="verifyStatus" jdbcType="INTEGER" property="verifyStatus" />
     <result column="sort" jdbcType="INTEGER" property="sort" />
     <result column="sale" jdbcType="INTEGER" property="sale" />
     <result column="price" jdbcType="DECIMAL" property="price" />
@@ -22,24 +22,24 @@
     <result column="gift_growth" jdbcType="INTEGER" property="giftGrowth" />
     <result column="gift_point" jdbcType="INTEGER" property="giftPoint" />
     <result column="use_point_limit" jdbcType="INTEGER" property="usePointLimit" />
-    <result column="sub_title" jdbcType="VARCHAR" property="subTitle" />
+    <result column="subTitle" jdbcType="VARCHAR" property="subTitle" />
     <result column="original_price" jdbcType="DECIMAL" property="originalPrice" />
     <result column="stock" jdbcType="INTEGER" property="stock" />
     <result column="low_stock" jdbcType="INTEGER" property="lowStock" />
     <result column="unit" jdbcType="VARCHAR" property="unit" />
     <result column="weight" jdbcType="DECIMAL" property="weight" />
     <result column="preview_status" jdbcType="INTEGER" property="previewStatus" />
-    <result column="service_ids" jdbcType="VARCHAR" property="serviceIds" />
+    <result column="serviceIds" jdbcType="VARCHAR" property="serviceIds" />
     <result column="keywords" jdbcType="VARCHAR" property="keywords" />
     <result column="note" jdbcType="VARCHAR" property="note" />
-    <result column="album_pics" jdbcType="VARCHAR" property="albumPics" />
+    <result column="albumPics" jdbcType="VARCHAR" property="albumPics" />
     <result column="detail_title" jdbcType="VARCHAR" property="detailTitle" />
     <result column="promotion_start_time" jdbcType="TIMESTAMP" property="promotionStartTime" />
     <result column="promotion_end_time" jdbcType="TIMESTAMP" property="promotionEndTime" />
     <result column="promotion_per_limit" jdbcType="INTEGER" property="promotionPerLimit" />
-    <result column="promotion_type" jdbcType="INTEGER" property="promotionType" />
-    <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
-    <result column="product_category_name" jdbcType="VARCHAR" property="productCategoryName" />
+    <result column="promotionType" jdbcType="INTEGER" property="promotionType" />
+    <result column="brandName" jdbcType="VARCHAR" property="brandName" />
+    <result column="productCategoryName" jdbcType="VARCHAR" property="productCategoryName" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.macro.mall.model.PmsProduct">
     <result column="description" jdbcType="LONGVARCHAR" property="description" />
@@ -106,12 +106,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, brand_id, product_category_id, feight_template_id, product_attribute_category_id, 
-    name, pic, product_sn, delete_status, publish_status, new_status, recommand_status, 
-    verify_status, sort, sale, price, promotion_price, gift_growth, gift_point, use_point_limit, 
-    sub_title, original_price, stock, low_stock, unit, weight, preview_status, service_ids, 
-    keywords, note, album_pics, detail_title, promotion_start_time, promotion_end_time, 
-    promotion_per_limit, promotion_type, brand_name, product_category_name
+    productId, brandId, productCategoryId, feightTemplateId, productAttributeCategoryId,
+    productName, pic, product_sn, deleteStatus, publishStatus, newStatus, recommandStatus,deleteStatus,
+    verifyStatus, sort, subTitle, unit, weight, serviceIds,
+    keywords,  albumPics,promotionType, brandName, productCategoryName
   </sql>
   <sql id="Blob_Column_List">
     description, detail_desc, detail_html, detail_mobile_html
@@ -168,30 +166,30 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into pms_product (brand_id, product_category_id, feight_template_id, 
-      product_attribute_category_id, name, pic, 
-      product_sn, delete_status, publish_status, 
-      new_status, recommand_status, verify_status, 
-      sort, sale, price, 
+    insert into pms_product (brandId, productCategoryId, feightTemplateId, 
+      productAttributeCategoryId, name, pic, 
+      product_sn, deleteStatus, publishStatus, 
+      newStatus, recommandStatus, verifyStatus, 
+      sort,  price, 
       promotion_price, gift_growth, gift_point, 
-      use_point_limit, sub_title, original_price, 
+      use_point_limit, subTitle, original_price, 
       stock, low_stock, unit, 
-      weight, preview_status, service_ids, 
-      keywords, note, album_pics, 
+      weight, preview_status, serviceIds, 
+      keywords,  albumPics, 
       detail_title, promotion_start_time, promotion_end_time, 
-      promotion_per_limit, promotion_type, brand_name, 
-      product_category_name, description, detail_desc, 
+      promotion_per_limit, promotionType, brandName, 
+      productCategoryName, description, detail_desc, 
       detail_html, detail_mobile_html)
     values (#{brandId,jdbcType=BIGINT}, #{productCategoryId,jdbcType=BIGINT}, #{feightTemplateId,jdbcType=BIGINT}, 
       #{productAttributeCategoryId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, 
       #{productSn,jdbcType=VARCHAR}, #{deleteStatus,jdbcType=INTEGER}, #{publishStatus,jdbcType=INTEGER}, 
       #{newStatus,jdbcType=INTEGER}, #{recommandStatus,jdbcType=INTEGER}, #{verifyStatus,jdbcType=INTEGER}, 
-      #{sort,jdbcType=INTEGER}, #{sale,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, 
+      #{sort,jdbcType=INTEGER}, #{jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, 
       #{promotionPrice,jdbcType=DECIMAL}, #{giftGrowth,jdbcType=INTEGER}, #{giftPoint,jdbcType=INTEGER}, 
       #{usePointLimit,jdbcType=INTEGER}, #{subTitle,jdbcType=VARCHAR}, #{originalPrice,jdbcType=DECIMAL}, 
       #{stock,jdbcType=INTEGER}, #{lowStock,jdbcType=INTEGER}, #{unit,jdbcType=VARCHAR}, 
       #{weight,jdbcType=DECIMAL}, #{previewStatus,jdbcType=INTEGER}, #{serviceIds,jdbcType=VARCHAR}, 
-      #{keywords,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, #{albumPics,jdbcType=VARCHAR}, 
+      #{keywords,jdbcType=VARCHAR}, #{jdbcType=VARCHAR}, #{albumPics,jdbcType=VARCHAR}, 
       #{detailTitle,jdbcType=VARCHAR}, #{promotionStartTime,jdbcType=TIMESTAMP}, #{promotionEndTime,jdbcType=TIMESTAMP}, 
       #{promotionPerLimit,jdbcType=INTEGER}, #{promotionType,jdbcType=INTEGER}, #{brandName,jdbcType=VARCHAR}, 
       #{productCategoryName,jdbcType=VARCHAR}, #{description,jdbcType=LONGVARCHAR}, #{detailDesc,jdbcType=LONGVARCHAR}, 
@@ -204,16 +202,16 @@
     insert into pms_product
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="brandId != null">
-        brand_id,
+        brandId,
       </if>
       <if test="productCategoryId != null">
-        product_category_id,
+        productCategoryId,
       </if>
       <if test="feightTemplateId != null">
-        feight_template_id,
+        feightTemplateId,
       </if>
       <if test="productAttributeCategoryId != null">
-        product_attribute_category_id,
+        productAttributeCategoryId,
       </if>
       <if test="name != null">
         name,
@@ -225,25 +223,25 @@
         product_sn,
       </if>
       <if test="deleteStatus != null">
-        delete_status,
+        deleteStatus,
       </if>
       <if test="publishStatus != null">
-        publish_status,
+        publishStatus,
       </if>
       <if test="newStatus != null">
-        new_status,
+        newStatus,
       </if>
       <if test="recommandStatus != null">
-        recommand_status,
+        recommandStatus,
       </if>
       <if test="verifyStatus != null">
-        verify_status,
+        verifyStatus,
       </if>
       <if test="sort != null">
         sort,
       </if>
       <if test="sale != null">
-        sale,
+        
       </if>
       <if test="price != null">
         price,
@@ -261,7 +259,7 @@
         use_point_limit,
       </if>
       <if test="subTitle != null">
-        sub_title,
+        subTitle,
       </if>
       <if test="originalPrice != null">
         original_price,
@@ -282,16 +280,16 @@
         preview_status,
       </if>
       <if test="serviceIds != null">
-        service_ids,
+        serviceIds,
       </if>
       <if test="keywords != null">
         keywords,
       </if>
       <if test="note != null">
-        note,
+        
       </if>
       <if test="albumPics != null">
-        album_pics,
+        albumPics,
       </if>
       <if test="detailTitle != null">
         detail_title,
@@ -306,13 +304,13 @@
         promotion_per_limit,
       </if>
       <if test="promotionType != null">
-        promotion_type,
+        promotionType,
       </if>
       <if test="brandName != null">
-        brand_name,
+        brandName,
       </if>
       <if test="productCategoryName != null">
-        product_category_name,
+        productCategoryName,
       </if>
       <if test="description != null">
         description,
@@ -368,7 +366,7 @@
         #{sort,jdbcType=INTEGER},
       </if>
       <if test="sale != null">
-        #{sale,jdbcType=INTEGER},
+        #{jdbcType=INTEGER},
       </if>
       <if test="price != null">
         #{price,jdbcType=DECIMAL},
@@ -413,7 +411,7 @@
         #{keywords,jdbcType=VARCHAR},
       </if>
       <if test="note != null">
-        #{note,jdbcType=VARCHAR},
+        #{jdbcType=VARCHAR},
       </if>
       <if test="albumPics != null">
         #{albumPics,jdbcType=VARCHAR},
@@ -466,16 +464,16 @@
         id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.brandId != null">
-        brand_id = #{record.brandId,jdbcType=BIGINT},
+        brandId = #{record.brandId,jdbcType=BIGINT},
       </if>
       <if test="record.productCategoryId != null">
-        product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
+        productCategoryId = #{record.productCategoryId,jdbcType=BIGINT},
       </if>
       <if test="record.feightTemplateId != null">
-        feight_template_id = #{record.feightTemplateId,jdbcType=BIGINT},
+        feightTemplateId = #{record.feightTemplateId,jdbcType=BIGINT},
       </if>
       <if test="record.productAttributeCategoryId != null">
-        product_attribute_category_id = #{record.productAttributeCategoryId,jdbcType=BIGINT},
+        productAttributeCategoryId = #{record.productAttributeCategoryId,jdbcType=BIGINT},
       </if>
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
@@ -487,25 +485,25 @@
         product_sn = #{record.productSn,jdbcType=VARCHAR},
       </if>
       <if test="record.deleteStatus != null">
-        delete_status = #{record.deleteStatus,jdbcType=INTEGER},
+        deleteStatus = #{record.deleteStatus,jdbcType=INTEGER},
       </if>
       <if test="record.publishStatus != null">
-        publish_status = #{record.publishStatus,jdbcType=INTEGER},
+        publishStatus = #{record.publishStatus,jdbcType=INTEGER},
       </if>
       <if test="record.newStatus != null">
-        new_status = #{record.newStatus,jdbcType=INTEGER},
+        newStatus = #{record.newStatus,jdbcType=INTEGER},
       </if>
       <if test="record.recommandStatus != null">
-        recommand_status = #{record.recommandStatus,jdbcType=INTEGER},
+        recommandStatus = #{record.recommandStatus,jdbcType=INTEGER},
       </if>
       <if test="record.verifyStatus != null">
-        verify_status = #{record.verifyStatus,jdbcType=INTEGER},
+        verifyStatus = #{record.verifyStatus,jdbcType=INTEGER},
       </if>
       <if test="record.sort != null">
         sort = #{record.sort,jdbcType=INTEGER},
       </if>
       <if test="record.sale != null">
-        sale = #{record.sale,jdbcType=INTEGER},
+        sale = #{record.jdbcType=INTEGER},
       </if>
       <if test="record.price != null">
         price = #{record.price,jdbcType=DECIMAL},
@@ -523,7 +521,7 @@
         use_point_limit = #{record.usePointLimit,jdbcType=INTEGER},
       </if>
       <if test="record.subTitle != null">
-        sub_title = #{record.subTitle,jdbcType=VARCHAR},
+        subTitle = #{record.subTitle,jdbcType=VARCHAR},
       </if>
       <if test="record.originalPrice != null">
         original_price = #{record.originalPrice,jdbcType=DECIMAL},
@@ -544,16 +542,16 @@
         preview_status = #{record.previewStatus,jdbcType=INTEGER},
       </if>
       <if test="record.serviceIds != null">
-        service_ids = #{record.serviceIds,jdbcType=VARCHAR},
+        serviceIds = #{record.serviceIds,jdbcType=VARCHAR},
       </if>
       <if test="record.keywords != null">
         keywords = #{record.keywords,jdbcType=VARCHAR},
       </if>
       <if test="record.note != null">
-        note = #{record.note,jdbcType=VARCHAR},
+        note = #{record.jdbcType=VARCHAR},
       </if>
       <if test="record.albumPics != null">
-        album_pics = #{record.albumPics,jdbcType=VARCHAR},
+        albumPics = #{record.albumPics,jdbcType=VARCHAR},
       </if>
       <if test="record.detailTitle != null">
         detail_title = #{record.detailTitle,jdbcType=VARCHAR},
@@ -568,13 +566,13 @@
         promotion_per_limit = #{record.promotionPerLimit,jdbcType=INTEGER},
       </if>
       <if test="record.promotionType != null">
-        promotion_type = #{record.promotionType,jdbcType=INTEGER},
+        promotionType = #{record.promotionType,jdbcType=INTEGER},
       </if>
       <if test="record.brandName != null">
-        brand_name = #{record.brandName,jdbcType=VARCHAR},
+        brandName = #{record.brandName,jdbcType=VARCHAR},
       </if>
       <if test="record.productCategoryName != null">
-        product_category_name = #{record.productCategoryName,jdbcType=VARCHAR},
+        productCategoryName = #{record.productCategoryName,jdbcType=VARCHAR},
       </if>
       <if test="record.description != null">
         description = #{record.description,jdbcType=LONGVARCHAR},
@@ -596,43 +594,43 @@
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update pms_product
     set id = #{record.id,jdbcType=BIGINT},
-      brand_id = #{record.brandId,jdbcType=BIGINT},
-      product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
-      feight_template_id = #{record.feightTemplateId,jdbcType=BIGINT},
-      product_attribute_category_id = #{record.productAttributeCategoryId,jdbcType=BIGINT},
+      brandId = #{record.brandId,jdbcType=BIGINT},
+      productCategoryId = #{record.productCategoryId,jdbcType=BIGINT},
+      feightTemplateId = #{record.feightTemplateId,jdbcType=BIGINT},
+      productAttributeCategoryId = #{record.productAttributeCategoryId,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
       pic = #{record.pic,jdbcType=VARCHAR},
       product_sn = #{record.productSn,jdbcType=VARCHAR},
-      delete_status = #{record.deleteStatus,jdbcType=INTEGER},
-      publish_status = #{record.publishStatus,jdbcType=INTEGER},
-      new_status = #{record.newStatus,jdbcType=INTEGER},
-      recommand_status = #{record.recommandStatus,jdbcType=INTEGER},
-      verify_status = #{record.verifyStatus,jdbcType=INTEGER},
+      deleteStatus = #{record.deleteStatus,jdbcType=INTEGER},
+      publishStatus = #{record.publishStatus,jdbcType=INTEGER},
+      newStatus = #{record.newStatus,jdbcType=INTEGER},
+      recommandStatus = #{record.recommandStatus,jdbcType=INTEGER},
+      verifyStatus = #{record.verifyStatus,jdbcType=INTEGER},
       sort = #{record.sort,jdbcType=INTEGER},
-      sale = #{record.sale,jdbcType=INTEGER},
+      sale = #{record.jdbcType=INTEGER},
       price = #{record.price,jdbcType=DECIMAL},
       promotion_price = #{record.promotionPrice,jdbcType=DECIMAL},
       gift_growth = #{record.giftGrowth,jdbcType=INTEGER},
       gift_point = #{record.giftPoint,jdbcType=INTEGER},
       use_point_limit = #{record.usePointLimit,jdbcType=INTEGER},
-      sub_title = #{record.subTitle,jdbcType=VARCHAR},
+      subTitle = #{record.subTitle,jdbcType=VARCHAR},
       original_price = #{record.originalPrice,jdbcType=DECIMAL},
       stock = #{record.stock,jdbcType=INTEGER},
       low_stock = #{record.lowStock,jdbcType=INTEGER},
       unit = #{record.unit,jdbcType=VARCHAR},
       weight = #{record.weight,jdbcType=DECIMAL},
       preview_status = #{record.previewStatus,jdbcType=INTEGER},
-      service_ids = #{record.serviceIds,jdbcType=VARCHAR},
+      serviceIds = #{record.serviceIds,jdbcType=VARCHAR},
       keywords = #{record.keywords,jdbcType=VARCHAR},
-      note = #{record.note,jdbcType=VARCHAR},
-      album_pics = #{record.albumPics,jdbcType=VARCHAR},
+      note = #{record.jdbcType=VARCHAR},
+      albumPics = #{record.albumPics,jdbcType=VARCHAR},
       detail_title = #{record.detailTitle,jdbcType=VARCHAR},
       promotion_start_time = #{record.promotionStartTime,jdbcType=TIMESTAMP},
       promotion_end_time = #{record.promotionEndTime,jdbcType=TIMESTAMP},
       promotion_per_limit = #{record.promotionPerLimit,jdbcType=INTEGER},
-      promotion_type = #{record.promotionType,jdbcType=INTEGER},
-      brand_name = #{record.brandName,jdbcType=VARCHAR},
-      product_category_name = #{record.productCategoryName,jdbcType=VARCHAR},
+      promotionType = #{record.promotionType,jdbcType=INTEGER},
+      brandName = #{record.brandName,jdbcType=VARCHAR},
+      productCategoryName = #{record.productCategoryName,jdbcType=VARCHAR},
       description = #{record.description,jdbcType=LONGVARCHAR},
       detail_desc = #{record.detailDesc,jdbcType=LONGVARCHAR},
       detail_html = #{record.detailHtml,jdbcType=LONGVARCHAR},
@@ -644,43 +642,43 @@
   <update id="updateByExample" parameterType="map">
     update pms_product
     set id = #{record.id,jdbcType=BIGINT},
-      brand_id = #{record.brandId,jdbcType=BIGINT},
-      product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
-      feight_template_id = #{record.feightTemplateId,jdbcType=BIGINT},
-      product_attribute_category_id = #{record.productAttributeCategoryId,jdbcType=BIGINT},
+      brandId = #{record.brandId,jdbcType=BIGINT},
+      productCategoryId = #{record.productCategoryId,jdbcType=BIGINT},
+      feightTemplateId = #{record.feightTemplateId,jdbcType=BIGINT},
+      productAttributeCategoryId = #{record.productAttributeCategoryId,jdbcType=BIGINT},
       name = #{record.name,jdbcType=VARCHAR},
       pic = #{record.pic,jdbcType=VARCHAR},
       product_sn = #{record.productSn,jdbcType=VARCHAR},
-      delete_status = #{record.deleteStatus,jdbcType=INTEGER},
-      publish_status = #{record.publishStatus,jdbcType=INTEGER},
-      new_status = #{record.newStatus,jdbcType=INTEGER},
-      recommand_status = #{record.recommandStatus,jdbcType=INTEGER},
-      verify_status = #{record.verifyStatus,jdbcType=INTEGER},
+      deleteStatus = #{record.deleteStatus,jdbcType=INTEGER},
+      publishStatus = #{record.publishStatus,jdbcType=INTEGER},
+      newStatus = #{record.newStatus,jdbcType=INTEGER},
+      recommandStatus = #{record.recommandStatus,jdbcType=INTEGER},
+      verifyStatus = #{record.verifyStatus,jdbcType=INTEGER},
       sort = #{record.sort,jdbcType=INTEGER},
-      sale = #{record.sale,jdbcType=INTEGER},
+      sale = #{record.jdbcType=INTEGER},
       price = #{record.price,jdbcType=DECIMAL},
       promotion_price = #{record.promotionPrice,jdbcType=DECIMAL},
       gift_growth = #{record.giftGrowth,jdbcType=INTEGER},
       gift_point = #{record.giftPoint,jdbcType=INTEGER},
       use_point_limit = #{record.usePointLimit,jdbcType=INTEGER},
-      sub_title = #{record.subTitle,jdbcType=VARCHAR},
+      subTitle = #{record.subTitle,jdbcType=VARCHAR},
       original_price = #{record.originalPrice,jdbcType=DECIMAL},
       stock = #{record.stock,jdbcType=INTEGER},
       low_stock = #{record.lowStock,jdbcType=INTEGER},
       unit = #{record.unit,jdbcType=VARCHAR},
       weight = #{record.weight,jdbcType=DECIMAL},
       preview_status = #{record.previewStatus,jdbcType=INTEGER},
-      service_ids = #{record.serviceIds,jdbcType=VARCHAR},
+      serviceIds = #{record.serviceIds,jdbcType=VARCHAR},
       keywords = #{record.keywords,jdbcType=VARCHAR},
-      note = #{record.note,jdbcType=VARCHAR},
-      album_pics = #{record.albumPics,jdbcType=VARCHAR},
+      note = #{record.jdbcType=VARCHAR},
+      albumPics = #{record.albumPics,jdbcType=VARCHAR},
       detail_title = #{record.detailTitle,jdbcType=VARCHAR},
       promotion_start_time = #{record.promotionStartTime,jdbcType=TIMESTAMP},
       promotion_end_time = #{record.promotionEndTime,jdbcType=TIMESTAMP},
       promotion_per_limit = #{record.promotionPerLimit,jdbcType=INTEGER},
-      promotion_type = #{record.promotionType,jdbcType=INTEGER},
-      brand_name = #{record.brandName,jdbcType=VARCHAR},
-      product_category_name = #{record.productCategoryName,jdbcType=VARCHAR}
+      promotionType = #{record.promotionType,jdbcType=INTEGER},
+      brandName = #{record.brandName,jdbcType=VARCHAR},
+      productCategoryName = #{record.productCategoryName,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -689,16 +687,16 @@
     update pms_product
     <set>
       <if test="brandId != null">
-        brand_id = #{brandId,jdbcType=BIGINT},
+        brandId = #{brandId,jdbcType=BIGINT},
       </if>
       <if test="productCategoryId != null">
-        product_category_id = #{productCategoryId,jdbcType=BIGINT},
+        productCategoryId = #{productCategoryId,jdbcType=BIGINT},
       </if>
       <if test="feightTemplateId != null">
-        feight_template_id = #{feightTemplateId,jdbcType=BIGINT},
+        feightTemplateId = #{feightTemplateId,jdbcType=BIGINT},
       </if>
       <if test="productAttributeCategoryId != null">
-        product_attribute_category_id = #{productAttributeCategoryId,jdbcType=BIGINT},
+        productAttributeCategoryId = #{productAttributeCategoryId,jdbcType=BIGINT},
       </if>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
@@ -710,25 +708,25 @@
         product_sn = #{productSn,jdbcType=VARCHAR},
       </if>
       <if test="deleteStatus != null">
-        delete_status = #{deleteStatus,jdbcType=INTEGER},
+        deleteStatus = #{deleteStatus,jdbcType=INTEGER},
       </if>
       <if test="publishStatus != null">
-        publish_status = #{publishStatus,jdbcType=INTEGER},
+        publishStatus = #{publishStatus,jdbcType=INTEGER},
       </if>
       <if test="newStatus != null">
-        new_status = #{newStatus,jdbcType=INTEGER},
+        newStatus = #{newStatus,jdbcType=INTEGER},
       </if>
       <if test="recommandStatus != null">
-        recommand_status = #{recommandStatus,jdbcType=INTEGER},
+        recommandStatus = #{recommandStatus,jdbcType=INTEGER},
       </if>
       <if test="verifyStatus != null">
-        verify_status = #{verifyStatus,jdbcType=INTEGER},
+        verifyStatus = #{verifyStatus,jdbcType=INTEGER},
       </if>
       <if test="sort != null">
         sort = #{sort,jdbcType=INTEGER},
       </if>
       <if test="sale != null">
-        sale = #{sale,jdbcType=INTEGER},
+        sale = #{jdbcType=INTEGER},
       </if>
       <if test="price != null">
         price = #{price,jdbcType=DECIMAL},
@@ -746,7 +744,7 @@
         use_point_limit = #{usePointLimit,jdbcType=INTEGER},
       </if>
       <if test="subTitle != null">
-        sub_title = #{subTitle,jdbcType=VARCHAR},
+        subTitle = #{subTitle,jdbcType=VARCHAR},
       </if>
       <if test="originalPrice != null">
         original_price = #{originalPrice,jdbcType=DECIMAL},
@@ -767,16 +765,16 @@
         preview_status = #{previewStatus,jdbcType=INTEGER},
       </if>
       <if test="serviceIds != null">
-        service_ids = #{serviceIds,jdbcType=VARCHAR},
+        serviceIds = #{serviceIds,jdbcType=VARCHAR},
       </if>
       <if test="keywords != null">
         keywords = #{keywords,jdbcType=VARCHAR},
       </if>
       <if test="note != null">
-        note = #{note,jdbcType=VARCHAR},
+        note = #{jdbcType=VARCHAR},
       </if>
       <if test="albumPics != null">
-        album_pics = #{albumPics,jdbcType=VARCHAR},
+        albumPics = #{albumPics,jdbcType=VARCHAR},
       </if>
       <if test="detailTitle != null">
         detail_title = #{detailTitle,jdbcType=VARCHAR},
@@ -791,13 +789,13 @@
         promotion_per_limit = #{promotionPerLimit,jdbcType=INTEGER},
       </if>
       <if test="promotionType != null">
-        promotion_type = #{promotionType,jdbcType=INTEGER},
+        promotionType = #{promotionType,jdbcType=INTEGER},
       </if>
       <if test="brandName != null">
-        brand_name = #{brandName,jdbcType=VARCHAR},
+        brandName = #{brandName,jdbcType=VARCHAR},
       </if>
       <if test="productCategoryName != null">
-        product_category_name = #{productCategoryName,jdbcType=VARCHAR},
+        productCategoryName = #{productCategoryName,jdbcType=VARCHAR},
       </if>
       <if test="description != null">
         description = #{description,jdbcType=LONGVARCHAR},
@@ -816,43 +814,43 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.macro.mall.model.PmsProduct">
     update pms_product
-    set brand_id = #{brandId,jdbcType=BIGINT},
-      product_category_id = #{productCategoryId,jdbcType=BIGINT},
-      feight_template_id = #{feightTemplateId,jdbcType=BIGINT},
-      product_attribute_category_id = #{productAttributeCategoryId,jdbcType=BIGINT},
+    set brandId = #{brandId,jdbcType=BIGINT},
+      productCategoryId = #{productCategoryId,jdbcType=BIGINT},
+      feightTemplateId = #{feightTemplateId,jdbcType=BIGINT},
+      productAttributeCategoryId = #{productAttributeCategoryId,jdbcType=BIGINT},
       name = #{name,jdbcType=VARCHAR},
       pic = #{pic,jdbcType=VARCHAR},
       product_sn = #{productSn,jdbcType=VARCHAR},
-      delete_status = #{deleteStatus,jdbcType=INTEGER},
-      publish_status = #{publishStatus,jdbcType=INTEGER},
-      new_status = #{newStatus,jdbcType=INTEGER},
-      recommand_status = #{recommandStatus,jdbcType=INTEGER},
-      verify_status = #{verifyStatus,jdbcType=INTEGER},
+      deleteStatus = #{deleteStatus,jdbcType=INTEGER},
+      publishStatus = #{publishStatus,jdbcType=INTEGER},
+      newStatus = #{newStatus,jdbcType=INTEGER},
+      recommandStatus = #{recommandStatus,jdbcType=INTEGER},
+      verifyStatus = #{verifyStatus,jdbcType=INTEGER},
       sort = #{sort,jdbcType=INTEGER},
-      sale = #{sale,jdbcType=INTEGER},
+      sale = #{jdbcType=INTEGER},
       price = #{price,jdbcType=DECIMAL},
       promotion_price = #{promotionPrice,jdbcType=DECIMAL},
       gift_growth = #{giftGrowth,jdbcType=INTEGER},
       gift_point = #{giftPoint,jdbcType=INTEGER},
       use_point_limit = #{usePointLimit,jdbcType=INTEGER},
-      sub_title = #{subTitle,jdbcType=VARCHAR},
+      subTitle = #{subTitle,jdbcType=VARCHAR},
       original_price = #{originalPrice,jdbcType=DECIMAL},
       stock = #{stock,jdbcType=INTEGER},
       low_stock = #{lowStock,jdbcType=INTEGER},
       unit = #{unit,jdbcType=VARCHAR},
       weight = #{weight,jdbcType=DECIMAL},
       preview_status = #{previewStatus,jdbcType=INTEGER},
-      service_ids = #{serviceIds,jdbcType=VARCHAR},
+      serviceIds = #{serviceIds,jdbcType=VARCHAR},
       keywords = #{keywords,jdbcType=VARCHAR},
-      note = #{note,jdbcType=VARCHAR},
-      album_pics = #{albumPics,jdbcType=VARCHAR},
+      note = #{jdbcType=VARCHAR},
+      albumPics = #{albumPics,jdbcType=VARCHAR},
       detail_title = #{detailTitle,jdbcType=VARCHAR},
       promotion_start_time = #{promotionStartTime,jdbcType=TIMESTAMP},
       promotion_end_time = #{promotionEndTime,jdbcType=TIMESTAMP},
       promotion_per_limit = #{promotionPerLimit,jdbcType=INTEGER},
-      promotion_type = #{promotionType,jdbcType=INTEGER},
-      brand_name = #{brandName,jdbcType=VARCHAR},
-      product_category_name = #{productCategoryName,jdbcType=VARCHAR},
+      promotionType = #{promotionType,jdbcType=INTEGER},
+      brandName = #{brandName,jdbcType=VARCHAR},
+      productCategoryName = #{productCategoryName,jdbcType=VARCHAR},
       description = #{description,jdbcType=LONGVARCHAR},
       detail_desc = #{detailDesc,jdbcType=LONGVARCHAR},
       detail_html = #{detailHtml,jdbcType=LONGVARCHAR},
@@ -861,43 +859,43 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.macro.mall.model.PmsProduct">
     update pms_product
-    set brand_id = #{brandId,jdbcType=BIGINT},
-      product_category_id = #{productCategoryId,jdbcType=BIGINT},
-      feight_template_id = #{feightTemplateId,jdbcType=BIGINT},
-      product_attribute_category_id = #{productAttributeCategoryId,jdbcType=BIGINT},
+    set brandId = #{brandId,jdbcType=BIGINT},
+      productCategoryId = #{productCategoryId,jdbcType=BIGINT},
+      feightTemplateId = #{feightTemplateId,jdbcType=BIGINT},
+      productAttributeCategoryId = #{productAttributeCategoryId,jdbcType=BIGINT},
       name = #{name,jdbcType=VARCHAR},
       pic = #{pic,jdbcType=VARCHAR},
       product_sn = #{productSn,jdbcType=VARCHAR},
-      delete_status = #{deleteStatus,jdbcType=INTEGER},
-      publish_status = #{publishStatus,jdbcType=INTEGER},
-      new_status = #{newStatus,jdbcType=INTEGER},
-      recommand_status = #{recommandStatus,jdbcType=INTEGER},
-      verify_status = #{verifyStatus,jdbcType=INTEGER},
+      deleteStatus = #{deleteStatus,jdbcType=INTEGER},
+      publishStatus = #{publishStatus,jdbcType=INTEGER},
+      newStatus = #{newStatus,jdbcType=INTEGER},
+      recommandStatus = #{recommandStatus,jdbcType=INTEGER},
+      verifyStatus = #{verifyStatus,jdbcType=INTEGER},
       sort = #{sort,jdbcType=INTEGER},
-      sale = #{sale,jdbcType=INTEGER},
+      sale = #{jdbcType=INTEGER},
       price = #{price,jdbcType=DECIMAL},
       promotion_price = #{promotionPrice,jdbcType=DECIMAL},
       gift_growth = #{giftGrowth,jdbcType=INTEGER},
       gift_point = #{giftPoint,jdbcType=INTEGER},
       use_point_limit = #{usePointLimit,jdbcType=INTEGER},
-      sub_title = #{subTitle,jdbcType=VARCHAR},
+      subTitle = #{subTitle,jdbcType=VARCHAR},
       original_price = #{originalPrice,jdbcType=DECIMAL},
       stock = #{stock,jdbcType=INTEGER},
       low_stock = #{lowStock,jdbcType=INTEGER},
       unit = #{unit,jdbcType=VARCHAR},
       weight = #{weight,jdbcType=DECIMAL},
       preview_status = #{previewStatus,jdbcType=INTEGER},
-      service_ids = #{serviceIds,jdbcType=VARCHAR},
+      serviceIds = #{serviceIds,jdbcType=VARCHAR},
       keywords = #{keywords,jdbcType=VARCHAR},
-      note = #{note,jdbcType=VARCHAR},
-      album_pics = #{albumPics,jdbcType=VARCHAR},
+      note = #{jdbcType=VARCHAR},
+      albumPics = #{albumPics,jdbcType=VARCHAR},
       detail_title = #{detailTitle,jdbcType=VARCHAR},
       promotion_start_time = #{promotionStartTime,jdbcType=TIMESTAMP},
       promotion_end_time = #{promotionEndTime,jdbcType=TIMESTAMP},
       promotion_per_limit = #{promotionPerLimit,jdbcType=INTEGER},
-      promotion_type = #{promotionType,jdbcType=INTEGER},
-      brand_name = #{brandName,jdbcType=VARCHAR},
-      product_category_name = #{productCategoryName,jdbcType=VARCHAR}
+      promotionType = #{promotionType,jdbcType=INTEGER},
+      brandName = #{brandName,jdbcType=VARCHAR},
+      productCategoryName = #{productCategoryName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

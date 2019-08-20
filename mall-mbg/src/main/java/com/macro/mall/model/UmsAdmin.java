@@ -5,9 +5,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class UmsAdmin implements Serializable {
-    private Long id;
+    private Long adminId;
 
-    private String username;
+    private String userName;
 
     private String password;
 
@@ -34,20 +34,20 @@ public class UmsAdmin implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Long getId() {
-        return id;
+    public Long getAdminId() {
+        return adminId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setAdminId(Long id) {
+        this.adminId = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -120,8 +120,8 @@ public class UmsAdmin implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", username=").append(username);
+        sb.append(", id=").append(adminId);
+        sb.append(", username=").append(userName);
         sb.append(", password=").append(password);
         sb.append(", icon=").append(icon);
         sb.append(", email=").append(email);

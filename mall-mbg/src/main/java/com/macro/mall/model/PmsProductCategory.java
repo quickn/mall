@@ -4,12 +4,12 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 public class PmsProductCategory implements Serializable {
-    private Long id;
+    private Long productCategoryId;
 
     @ApiModelProperty(value = "上机分类的编号：0表示一级分类")
     private Long parentId;
 
-    private String name;
+    private String productCategoryName;
 
     @ApiModelProperty(value = "分类级别：0->1级；1->2级")
     private Integer level;
@@ -36,12 +36,12 @@ public class PmsProductCategory implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Long getId() {
-        return id;
+    public Long getProductCategoryId() {
+        return productCategoryId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setProductCategoryId(Long id) {
+        this.productCategoryId = id;
     }
 
     public Long getParentId() {
@@ -52,12 +52,12 @@ public class PmsProductCategory implements Serializable {
         this.parentId = parentId;
     }
 
-    public String getName() {
-        return name;
+    public String getProductCategoryName() {
+        return productCategoryName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductCategoryName(String name) {
+        this.productCategoryName = name;
     }
 
     public Integer getLevel() {
@@ -138,9 +138,9 @@ public class PmsProductCategory implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
+        sb.append(", id=").append(productCategoryId);
         sb.append(", parentId=").append(parentId);
-        sb.append(", name=").append(name);
+        sb.append(", name=").append(productCategoryName);
         sb.append(", level=").append(level);
         sb.append(", productCount=").append(productCount);
         sb.append(", productUnit=").append(productUnit);
