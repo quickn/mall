@@ -16,7 +16,7 @@ public class PmsProductCategoryParam {
     private Long parentId;
     @ApiModelProperty(value = "商品分类名称",required = true)
     @NotEmpty(message = "商品分类名称不能为空")
-    private String name;
+    private String productCategoryName;
     @ApiModelProperty("分类单位")
     private String productUnit;
     @ApiModelProperty("是否在导航栏显示")
@@ -45,12 +45,12 @@ public class PmsProductCategoryParam {
         this.parentId = parentId;
     }
 
-    public String getName() {
-        return name;
+    public String getProductCategoryName() {
+        return productCategoryName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductCategoryName(String productCategoryName) {
+        this.productCategoryName = productCategoryName;
     }
 
     public String getProductUnit() {

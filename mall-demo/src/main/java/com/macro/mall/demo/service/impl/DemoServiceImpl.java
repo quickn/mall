@@ -36,7 +36,7 @@ public class DemoServiceImpl implements DemoService {
     public int updateBrand(Long id, PmsBrandDto pmsBrandDto) {
         PmsBrand pmsBrand = new PmsBrand();
         BeanUtils.copyProperties(pmsBrandDto,pmsBrand);
-        pmsBrand.setId(id);
+        pmsBrand.setBrandId(id);
         return brandMapper.updateByPrimaryKeySelective(pmsBrand);
     }
 

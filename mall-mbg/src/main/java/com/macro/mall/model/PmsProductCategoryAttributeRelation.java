@@ -6,7 +6,7 @@ import java.io.Serializable;
 public class PmsProductCategoryAttributeRelation implements Serializable {
     private Long id;
 
-    private Long productCategoryId;
+    private Long productAttributeCategoryId;
 
     private Long productAttributeId;
 
@@ -20,12 +20,12 @@ public class PmsProductCategoryAttributeRelation implements Serializable {
         this.id = id;
     }
 
-    public Long getProductCategoryId() {
-        return productCategoryId;
+    public Long getProductAttributeCategoryId() {
+        return productAttributeCategoryId;
     }
 
-    public void setProductCategoryId(Long productCategoryId) {
-        this.productCategoryId = productCategoryId;
+    public void setProductAttributeCategoryId(Long productAttributeCategoryId) {
+        this.productAttributeCategoryId = productAttributeCategoryId;
     }
 
     public Long getProductAttributeId() {
@@ -43,7 +43,7 @@ public class PmsProductCategoryAttributeRelation implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", productCategoryId=").append(productCategoryId);
+        sb.append(", productAttributeCategoryId=").append(productAttributeCategoryId);
         sb.append(", productAttributeId=").append(productAttributeId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

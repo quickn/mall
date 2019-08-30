@@ -3,13 +3,13 @@
 <mapper namespace="com.macro.mall.dao.PmsProductAttributeDao">
     <select id="getProductAttrInfo" resultType="com.macro.mall.dto.ProductAttrInfo">
         SELECT
-            pa.id  attributeId,
-            pac.id attributeCategoryId
+            pa.productAttributeId  attributeId,
+            pac.productAttributeCategoryId attributeCategoryId
         FROM
             pms_product_category_attribute_relation pcar
-            LEFT JOIN pms_product_attribute pa ON pa.id = pcar.product_attribute_id
-            LEFT JOIN pms_product_attribute_category pac ON pa.product_attribute_category_id = pac.id
+            LEFT JOIN pms_product_attribute pa ON pa.productAttributeId = pcar.productAttributeId
+            LEFT JOIN pms_product_attribute_category pac ON pa.productAttributeCategoryId = pac.productAttributeCategoryId
         WHERE
-            pcar.product_category_id = #{id}
+            pcar.productAttributeCategoryId = #{id}
     </select>
 </mapper>

@@ -118,11 +118,11 @@
     ,
     <include refid="Blob_Column_List" />
     from pms_product_category
-    where id = #{id,jdbcType=BIGINT}
+    where productCategoryId = #{productCategoryId,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from pms_product_category
-    where id = #{id,jdbcType=BIGINT}
+    where productCategoryId = #{productCategoryId,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.macro.mall.model.PmsProductCategoryExample">
     delete from pms_product_category
@@ -152,7 +152,7 @@
       <if test="parentId != null">
         parentId,
       </if>
-      <if test="name != null">
+      <if test="productCategoryName != null">
         productCategoryName,
       </if>
       <if test="level != null">
@@ -228,14 +228,14 @@
   <update id="updateByExampleSelective" parameterType="map">
     update pms_product_category
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="record.productCategoryId != null">
+        productCategoryId = #{record.productCategoryId,jdbcType=BIGINT},
       </if>
       <if test="record.parentId != null">
         parentId = #{record.parentId,jdbcType=BIGINT},
       </if>
-      <if test="record.name != null">
-        name = #{record.productCategoryName,jdbcType=VARCHAR},
+      <if test="record.productCategoryName != null">
+        productCategoryName = #{record.productCategoryName,jdbcType=VARCHAR},
       </if>
       <if test="record.level != null">
         level = #{record.level,jdbcType=INTEGER},
@@ -271,7 +271,7 @@
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update pms_product_category
-    set productCategoryId = #{record.id,jdbcType=BIGINT},
+    set productCategoryId = #{record.productCategoryId,jdbcType=BIGINT},
       parentId = #{record.parentId,jdbcType=BIGINT},
       productCategoryName = #{record.productCategoryName,jdbcType=VARCHAR},
       level = #{record.level,jdbcType=INTEGER},
@@ -289,7 +289,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update pms_product_category
-    set productCategoryId = #{record.id,jdbcType=BIGINT},
+    set productCategoryId = #{record.productCategoryId,jdbcType=BIGINT},
       parentId = #{record.parentId,jdbcType=BIGINT},
     productCategoryName = #{record.productCategoryName,jdbcType=VARCHAR},
       level = #{record.level,jdbcType=INTEGER},
@@ -310,7 +310,7 @@
       <if test="parentId != null">
         parentId = #{parentId,jdbcType=BIGINT},
       </if>
-      <if test="name != null">
+      <if test="productCategoryName != null">
         productCategoryName = #{productCategoryName,jdbcType=VARCHAR},
       </if>
       <if test="level != null">
@@ -341,7 +341,7 @@
         description = #{description,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where productCategoryId = #{productCategoryId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.macro.mall.model.PmsProductCategory">
     update pms_product_category
@@ -356,7 +356,7 @@
       icon = #{icon,jdbcType=VARCHAR},
       keywords = #{keywords,jdbcType=VARCHAR},
       description = #{description,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=BIGINT}
+    where productCategoryId = #{productCategoryId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.macro.mall.model.PmsProductCategory">
     update pms_product_category
@@ -370,6 +370,6 @@
       sort = #{sort,jdbcType=INTEGER},
       icon = #{icon,jdbcType=VARCHAR},
       keywords = #{keywords,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=BIGINT}
+    where productCategoryId = #{productCategoryId,jdbcType=BIGINT}
   </update>
 </mapper>

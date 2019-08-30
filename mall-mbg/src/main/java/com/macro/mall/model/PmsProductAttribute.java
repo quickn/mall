@@ -4,11 +4,11 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 public class PmsProductAttribute implements Serializable {
-    private Long id;
+    private Long productAttributeId;
 
     private Long productAttributeCategoryId;
 
-    private String name;
+    private String productAttributeName;
 
     @ApiModelProperty(value = "属性选择类型：0->唯一；1->单选；2->多选")
     private Integer selectType;
@@ -39,12 +39,12 @@ public class PmsProductAttribute implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Long getId() {
-        return id;
+    public Long getProductAttributeId() {
+        return productAttributeId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setProductAttributeId(Long id) {
+        this.productAttributeId = id;
     }
 
     public Long getProductAttributeCategoryId() {
@@ -55,12 +55,12 @@ public class PmsProductAttribute implements Serializable {
         this.productAttributeCategoryId = productAttributeCategoryId;
     }
 
-    public String getName() {
-        return name;
+    public String getProductAttributeName() {
+        return productAttributeName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductAttributeName(String name) {
+        this.productAttributeName = name;
     }
 
     public Integer getSelectType() {
@@ -141,9 +141,9 @@ public class PmsProductAttribute implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
+        sb.append(", productAttributeId=").append(productAttributeId);
         sb.append(", productAttributeCategoryId=").append(productAttributeCategoryId);
-        sb.append(", name=").append(name);
+        sb.append(", productAttributeName=").append(productAttributeName);
         sb.append(", selectType=").append(selectType);
         sb.append(", inputType=").append(inputType);
         sb.append(", inputList=").append(inputList);

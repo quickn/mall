@@ -3,9 +3,12 @@ package com.macro.mall.model;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class PmsSkuStock implements Serializable {
-    private Long id;
+    private Long skuStockId;
+
+    private Integer merchantId;
 
     private Long productId;
 
@@ -39,14 +42,41 @@ public class PmsSkuStock implements Serializable {
     @ApiModelProperty(value = "锁定库存")
     private Integer lockStock;
 
-    private static final long serialVersionUID = 1L;
+    private Date createTime;
+    private Date modifyTime;
 
-    public Long getId() {
-        return id;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getModifyTime() {
+        return modifyTime;
+    }
+
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
+    }
+
+    private static final long serialVersionUID = 1L;
+
+    public Long getSkuStockId() {
+        return skuStockId;
+    }
+
+    public void setSkuStockId(Long id) {
+        this.skuStockId = id;
+    }
+
+    public Integer getMerchantId() {
+        return merchantId;
+    }
+
+    public void setMerchantId(Integer merchantId) {
+        this.merchantId = merchantId;
     }
 
     public Long getProductId() {
@@ -151,7 +181,7 @@ public class PmsSkuStock implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
+        sb.append(", skuStockId=").append(skuStockId);
         sb.append(", productId=").append(productId);
         sb.append(", skuCode=").append(skuCode);
         sb.append(", price=").append(price);

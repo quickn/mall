@@ -16,7 +16,7 @@ public class PmsProduct implements Serializable {
 
     private Long productAttributeCategoryId;
 
-    private String name;
+    private String productName;
 
     private String pic;
 
@@ -126,8 +126,8 @@ public class PmsProduct implements Serializable {
         return productId;
     }
 
-    public void setProductId(Long id) {
-        this.productId = id;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
     public Long getBrandId() {
@@ -162,12 +162,12 @@ public class PmsProduct implements Serializable {
         this.productAttributeCategoryId = productAttributeCategoryId;
     }
 
-    public String getName() {
-        return name;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public String getPic() {
@@ -464,12 +464,12 @@ public class PmsProduct implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(productId);
+        sb.append(", productId=").append(productId);
         sb.append(", brandId=").append(brandId);
         sb.append(", productCategoryId=").append(productCategoryId);
         sb.append(", feightTemplateId=").append(feightTemplateId);
         sb.append(", productAttributeCategoryId=").append(productAttributeCategoryId);
-        sb.append(", name=").append(name);
+        sb.append(", productName=").append(productName);
         sb.append(", pic=").append(pic);
         sb.append(", productSn=").append(productSn);
         sb.append(", deleteStatus=").append(deleteStatus);

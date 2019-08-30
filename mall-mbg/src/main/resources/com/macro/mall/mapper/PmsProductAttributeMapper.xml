@@ -2,17 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.macro.mall.mapper.PmsProductAttributeMapper">
   <resultMap id="BaseResultMap" type="com.macro.mall.model.PmsProductAttribute">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="product_attribute_category_id" jdbcType="BIGINT" property="productAttributeCategoryId" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="select_type" jdbcType="INTEGER" property="selectType" />
-    <result column="input_type" jdbcType="INTEGER" property="inputType" />
-    <result column="input_list" jdbcType="VARCHAR" property="inputList" />
+    <id column="productAttributeId" jdbcType="BIGINT" property="productAttributeId" />
+    <result column="productAttributeCategoryId" jdbcType="BIGINT" property="productAttributeCategoryId" />
+    <result column="productAttributeName" jdbcType="VARCHAR" property="productAttributeName" />
+    <result column="selectType" jdbcType="INTEGER" property="selectType" />
+    <result column="inputType" jdbcType="INTEGER" property="inputType" />
+    <result column="inputList" jdbcType="VARCHAR" property="inputList" />
     <result column="sort" jdbcType="INTEGER" property="sort" />
-    <result column="filter_type" jdbcType="INTEGER" property="filterType" />
-    <result column="search_type" jdbcType="INTEGER" property="searchType" />
-    <result column="related_status" jdbcType="INTEGER" property="relatedStatus" />
-    <result column="hand_add_status" jdbcType="INTEGER" property="handAddStatus" />
+    <result column="filterType" jdbcType="INTEGER" property="filterType" />
+    <result column="searchType" jdbcType="INTEGER" property="searchType" />
+    <result column="relatedStatus" jdbcType="INTEGER" property="relatedStatus" />
+    <result column="handAddStatus" jdbcType="INTEGER" property="handAddStatus" />
     <result column="type" jdbcType="INTEGER" property="type" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -74,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, product_attribute_category_id, name, select_type, input_type, input_list, sort, 
-    filter_type, search_type, related_status, hand_add_status, type
+    productAttributeId, productAttributeCategoryId, productAttributeName, selectType, inputType, inputList, sort,
+    filterType, searchType, relatedStatus, handAddStatus, type
   </sql>
   <select id="selectByExample" parameterType="com.macro.mall.model.PmsProductAttributeExample" resultMap="BaseResultMap">
     select
@@ -95,11 +95,11 @@
     select 
     <include refid="Base_Column_List" />
     from pms_product_attribute
-    where id = #{id,jdbcType=BIGINT}
+    where productAttributeId = #{productAttributeId,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from pms_product_attribute
-    where id = #{id,jdbcType=BIGINT}
+    where productAttributeId = #{productAttributeId,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.macro.mall.model.PmsProductAttributeExample">
     delete from pms_product_attribute
@@ -111,10 +111,10 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into pms_product_attribute (product_attribute_category_id, name, 
-      select_type, input_type, input_list, 
-      sort, filter_type, search_type, 
-      related_status, hand_add_status, type
+    insert into pms_product_attribute (productAttributeCategoryId, productAttributeName, 
+      selectType, inputType, inputList, 
+      sort, filterType, searchType, 
+      relatedStatus, handAddStatus, type
       )
     values (#{productAttributeCategoryId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
       #{selectType,jdbcType=INTEGER}, #{inputType,jdbcType=INTEGER}, #{inputList,jdbcType=VARCHAR}, 
@@ -129,34 +129,34 @@
     insert into pms_product_attribute
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="productAttributeCategoryId != null">
-        product_attribute_category_id,
+        productAttributeCategoryId,
       </if>
-      <if test="name != null">
-        name,
+      <if test="productAttributeName!= null">
+        productAttributeName,
       </if>
       <if test="selectType != null">
-        select_type,
+        selectType,
       </if>
       <if test="inputType != null">
-        input_type,
+        inputType,
       </if>
       <if test="inputList != null">
-        input_list,
+        inputList,
       </if>
       <if test="sort != null">
         sort,
       </if>
       <if test="filterType != null">
-        filter_type,
+        filterType,
       </if>
       <if test="searchType != null">
-        search_type,
+        searchType,
       </if>
       <if test="relatedStatus != null">
-        related_status,
+        relatedStatus,
       </if>
       <if test="handAddStatus != null">
-        hand_add_status,
+        handAddStatus,
       </if>
       <if test="type != null">
         type,
@@ -166,7 +166,7 @@
       <if test="productAttributeCategoryId != null">
         #{productAttributeCategoryId,jdbcType=BIGINT},
       </if>
-      <if test="name != null">
+      <if test="productAttributeName!= null">
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="selectType != null">
@@ -207,38 +207,38 @@
   <update id="updateByExampleSelective" parameterType="map">
     update pms_product_attribute
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="record.productAttributeId != null">
+        productAttributeId = #{record.productAttributeId,jdbcType=BIGINT},
       </if>
       <if test="record.productAttributeCategoryId != null">
-        product_attribute_category_id = #{record.productAttributeCategoryId,jdbcType=BIGINT},
+        productAttributeCategoryId = #{record.productAttributeCategoryId,jdbcType=BIGINT},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="record.productAttributeName != null">
+        productAttributeName = #{record.productAttributeName,jdbcType=VARCHAR},
       </if>
       <if test="record.selectType != null">
-        select_type = #{record.selectType,jdbcType=INTEGER},
+        selectType = #{record.selectType,jdbcType=INTEGER},
       </if>
       <if test="record.inputType != null">
-        input_type = #{record.inputType,jdbcType=INTEGER},
+        inputType = #{record.inputType,jdbcType=INTEGER},
       </if>
       <if test="record.inputList != null">
-        input_list = #{record.inputList,jdbcType=VARCHAR},
+        inputList = #{record.inputList,jdbcType=VARCHAR},
       </if>
       <if test="record.sort != null">
         sort = #{record.sort,jdbcType=INTEGER},
       </if>
       <if test="record.filterType != null">
-        filter_type = #{record.filterType,jdbcType=INTEGER},
+        filterType = #{record.filterType,jdbcType=INTEGER},
       </if>
       <if test="record.searchType != null">
-        search_type = #{record.searchType,jdbcType=INTEGER},
+        searchType = #{record.searchType,jdbcType=INTEGER},
       </if>
       <if test="record.relatedStatus != null">
-        related_status = #{record.relatedStatus,jdbcType=INTEGER},
+        relatedStatus = #{record.relatedStatus,jdbcType=INTEGER},
       </if>
       <if test="record.handAddStatus != null">
-        hand_add_status = #{record.handAddStatus,jdbcType=INTEGER},
+        handAddStatus = #{record.handAddStatus,jdbcType=INTEGER},
       </if>
       <if test="record.type != null">
         type = #{record.type,jdbcType=INTEGER},
@@ -250,17 +250,17 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update pms_product_attribute
-    set id = #{record.id,jdbcType=BIGINT},
-      product_attribute_category_id = #{record.productAttributeCategoryId,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      select_type = #{record.selectType,jdbcType=INTEGER},
-      input_type = #{record.inputType,jdbcType=INTEGER},
-      input_list = #{record.inputList,jdbcType=VARCHAR},
+    set productAttributeId = #{record.productAttributeId,jdbcType=BIGINT},
+      productAttributeCategoryId = #{record.productAttributeCategoryId,jdbcType=BIGINT},
+    productAttributeName = #{record.productAttributeName,jdbcType=VARCHAR},
+      selectType = #{record.selectType,jdbcType=INTEGER},
+      inputType = #{record.inputType,jdbcType=INTEGER},
+      inputList = #{record.inputList,jdbcType=VARCHAR},
       sort = #{record.sort,jdbcType=INTEGER},
-      filter_type = #{record.filterType,jdbcType=INTEGER},
-      search_type = #{record.searchType,jdbcType=INTEGER},
-      related_status = #{record.relatedStatus,jdbcType=INTEGER},
-      hand_add_status = #{record.handAddStatus,jdbcType=INTEGER},
+      filterType = #{record.filterType,jdbcType=INTEGER},
+      searchType = #{record.searchType,jdbcType=INTEGER},
+      relatedStatus = #{record.relatedStatus,jdbcType=INTEGER},
+      handAddStatus = #{record.handAddStatus,jdbcType=INTEGER},
       type = #{record.type,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -270,54 +270,54 @@
     update pms_product_attribute
     <set>
       <if test="productAttributeCategoryId != null">
-        product_attribute_category_id = #{productAttributeCategoryId,jdbcType=BIGINT},
+        productAttributeCategoryId = #{productAttributeCategoryId,jdbcType=BIGINT},
       </if>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
+      <if test="productAttributeName!= null">
+        productAttributeName = #{productAttributeName,jdbcType=VARCHAR},
       </if>
       <if test="selectType != null">
-        select_type = #{selectType,jdbcType=INTEGER},
+        selectType = #{selectType,jdbcType=INTEGER},
       </if>
       <if test="inputType != null">
-        input_type = #{inputType,jdbcType=INTEGER},
+        inputType = #{inputType,jdbcType=INTEGER},
       </if>
       <if test="inputList != null">
-        input_list = #{inputList,jdbcType=VARCHAR},
+        inputList = #{inputList,jdbcType=VARCHAR},
       </if>
       <if test="sort != null">
         sort = #{sort,jdbcType=INTEGER},
       </if>
       <if test="filterType != null">
-        filter_type = #{filterType,jdbcType=INTEGER},
+        filterType = #{filterType,jdbcType=INTEGER},
       </if>
       <if test="searchType != null">
-        search_type = #{searchType,jdbcType=INTEGER},
+        searchType = #{searchType,jdbcType=INTEGER},
       </if>
       <if test="relatedStatus != null">
-        related_status = #{relatedStatus,jdbcType=INTEGER},
+        relatedStatus = #{relatedStatus,jdbcType=INTEGER},
       </if>
       <if test="handAddStatus != null">
-        hand_add_status = #{handAddStatus,jdbcType=INTEGER},
+        handAddStatus = #{handAddStatus,jdbcType=INTEGER},
       </if>
       <if test="type != null">
         type = #{type,jdbcType=INTEGER},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where productAttributeId = #{productAttributeId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.macro.mall.model.PmsProductAttribute">
     update pms_product_attribute
-    set product_attribute_category_id = #{productAttributeCategoryId,jdbcType=BIGINT},
-      name = #{name,jdbcType=VARCHAR},
-      select_type = #{selectType,jdbcType=INTEGER},
-      input_type = #{inputType,jdbcType=INTEGER},
-      input_list = #{inputList,jdbcType=VARCHAR},
+    set productAttributeCategoryId = #{productAttributeCategoryId,jdbcType=BIGINT},
+      productAttributeName = #{productAttributeName,jdbcType=VARCHAR},
+      selectType = #{selectType,jdbcType=INTEGER},
+      inputType = #{inputType,jdbcType=INTEGER},
+      inputList = #{inputList,jdbcType=VARCHAR},
       sort = #{sort,jdbcType=INTEGER},
-      filter_type = #{filterType,jdbcType=INTEGER},
-      search_type = #{searchType,jdbcType=INTEGER},
-      related_status = #{relatedStatus,jdbcType=INTEGER},
-      hand_add_status = #{handAddStatus,jdbcType=INTEGER},
+      filterType = #{filterType,jdbcType=INTEGER},
+      searchType = #{searchType,jdbcType=INTEGER},
+      relatedStatus = #{relatedStatus,jdbcType=INTEGER},
+      handAddStatus = #{handAddStatus,jdbcType=INTEGER},
       type = #{type,jdbcType=INTEGER}
-    where id = #{id,jdbcType=BIGINT}
+    where productAttributeId = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

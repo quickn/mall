@@ -251,7 +251,7 @@ public class OmsPromotionServiceImpl implements OmsPromotionService {
      */
     private PmsSkuStock getOriginalPrice(PromotionProduct promotionProduct, Long productSkuId) {
         for (PmsSkuStock skuStock : promotionProduct.getSkuStockList()) {
-            if (productSkuId.equals(skuStock.getId())) {
+            if (productSkuId.equals(skuStock.getSkuStockId())) {
                 return skuStock;
             }
         }
@@ -263,7 +263,7 @@ public class OmsPromotionServiceImpl implements OmsPromotionService {
      */
     private PromotionProduct getPromotionProductById(Long productId, List<PromotionProduct> promotionProductList) {
         for (PromotionProduct promotionProduct : promotionProductList) {
-            if (productId.equals(promotionProduct.getId())) {
+            if (productId.equals(promotionProduct.getProductId())) {
                 return promotionProduct;
             }
         }

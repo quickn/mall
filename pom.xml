@@ -18,6 +18,10 @@
         <module>mall-portal</module>
     </modules>
 
+    <properties>
+        <wcq.common.version>3.5.0</wcq.common.version>
+    </properties>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>

@@ -3,8 +3,8 @@
 <mapper namespace="com.macro.mall.mapper.PmsProductCategoryAttributeRelationMapper">
   <resultMap id="BaseResultMap" type="com.macro.mall.model.PmsProductCategoryAttributeRelation">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="product_category_id" jdbcType="BIGINT" property="productCategoryId" />
-    <result column="product_attribute_id" jdbcType="BIGINT" property="productAttributeId" />
+    <result column="productAttributeCategoryId" jdbcType="BIGINT" property="productAttributeCategoryId" />
+    <result column="productAttributeId" jdbcType="BIGINT" property="productAttributeId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, product_category_id, product_attribute_id
+    id, productAttributeCategoryId, productAttributeId
   </sql>
   <select id="selectByExample" parameterType="com.macro.mall.model.PmsProductCategoryAttributeRelationExample" resultMap="BaseResultMap">
     select
@@ -101,9 +101,9 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into pms_product_category_attribute_relation (product_category_id, product_attribute_id
+    insert into pms_product_category_attribute_relation (, productAttributeId
       )
-    values (#{productCategoryId,jdbcType=BIGINT}, #{productAttributeId,jdbcType=BIGINT}
+    values (#{productAttributeCategoryId,jdbcType=BIGINT}, #{productAttributeId,jdbcType=BIGINT}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.macro.mall.model.PmsProductCategoryAttributeRelation">
@@ -112,16 +112,16 @@
     </selectKey>
     insert into pms_product_category_attribute_relation
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="productCategoryId != null">
-        product_category_id,
+      <if test="productAttributeCategoryId != null">
+        ,
       </if>
       <if test="productAttributeId != null">
-        product_attribute_id,
+        productAttributeId,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="productCategoryId != null">
-        #{productCategoryId,jdbcType=BIGINT},
+      <if test="productAttributeCategoryId != null">
+        #{productAttributeCategoryId,jdbcType=BIGINT},
       </if>
       <if test="productAttributeId != null">
         #{productAttributeId,jdbcType=BIGINT},
@@ -140,11 +140,11 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.productCategoryId != null">
-        product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
+      <if test="record.productAttributeCategoryId != null">
+        productAttributeCategoryId = #{record.productAttributeCategoryId,jdbcType=BIGINT},
       </if>
       <if test="record.productAttributeId != null">
-        product_attribute_id = #{record.productAttributeId,jdbcType=BIGINT},
+        productAttributeId = #{record.productAttributeId,jdbcType=BIGINT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -154,8 +154,8 @@
   <update id="updateByExample" parameterType="map">
     update pms_product_category_attribute_relation
     set id = #{record.id,jdbcType=BIGINT},
-      product_category_id = #{record.productCategoryId,jdbcType=BIGINT},
-      product_attribute_id = #{record.productAttributeId,jdbcType=BIGINT}
+      productAttributeCategoryId = #{record.productAttributeCategoryId,jdbcType=BIGINT},
+      productAttributeId = #{record.productAttributeId,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -163,19 +163,19 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.macro.mall.model.PmsProductCategoryAttributeRelation">
     update pms_product_category_attribute_relation
     <set>
-      <if test="productCategoryId != null">
-        product_category_id = #{productCategoryId,jdbcType=BIGINT},
+      <if test="productAttributeCategoryId != null">
+        productAttributeCategoryId = #{productAttributeCategoryId,jdbcType=BIGINT},
       </if>
       <if test="productAttributeId != null">
-        product_attribute_id = #{productAttributeId,jdbcType=BIGINT},
+        productAttributeId = #{productAttributeId,jdbcType=BIGINT},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.macro.mall.model.PmsProductCategoryAttributeRelation">
     update pms_product_category_attribute_relation
-    set product_category_id = #{productCategoryId,jdbcType=BIGINT},
-      product_attribute_id = #{productAttributeId,jdbcType=BIGINT}
+    set productAttributeCategoryId = #{productAttributeCategoryId,jdbcType=BIGINT},
+      productAttributeId = #{productAttributeId,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

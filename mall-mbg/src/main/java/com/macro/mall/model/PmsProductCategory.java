@@ -138,9 +138,9 @@ public class PmsProductCategory implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(productCategoryId);
+        sb.append(", productCategoryId=").append(productCategoryId);
         sb.append(", parentId=").append(parentId);
-        sb.append(", name=").append(productCategoryName);
+        sb.append(", productCategoryName=").append(productCategoryName);
         sb.append(", level=").append(level);
         sb.append(", productCount=").append(productCount);
         sb.append(", productUnit=").append(productUnit);

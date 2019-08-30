@@ -10,6 +10,7 @@ import com.macro.mall.service.PmsProductAttributeCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -18,23 +19,23 @@ import java.util.List;
  */
 @Service
 public class PmsProductAttributeCategoryServiceImpl implements PmsProductAttributeCategoryService {
-    @Autowired
+    @Resource
     private PmsProductAttributeCategoryMapper productAttributeCategoryMapper;
-    @Autowired
+    @Resource
     private PmsProductAttributeCategoryDao productAttributeCategoryDao;
 
     @Override
     public int create(String name) {
         PmsProductAttributeCategory productAttributeCategory = new PmsProductAttributeCategory();
-        productAttributeCategory.setName(name);
+        productAttributeCategory.setAttributeCategoryName(name);
         return productAttributeCategoryMapper.insertSelective(productAttributeCategory);
     }
 
     @Override
     public int update(Long id, String name) {
         PmsProductAttributeCategory productAttributeCategory = new PmsProductAttributeCategory();
-        productAttributeCategory.setName(name);
-        productAttributeCategory.setId(id);
+        productAttributeCategory.setAttributeCategoryName(name);
+        productAttributeCategory.setProductAttributeCategoryId(id);
         return productAttributeCategoryMapper.updateByPrimaryKeySelective(productAttributeCategory);
     }
 

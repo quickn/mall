@@ -4,9 +4,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 public class PmsProductAttributeCategory implements Serializable {
-    private Long id;
+    private Long productAttributeCategoryId;
 
-    private String name;
+    private String attributeCategoryName;
 
     @ApiModelProperty(value = "属性数量")
     private Integer attributeCount;
@@ -16,20 +16,20 @@ public class PmsProductAttributeCategory implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Long getId() {
-        return id;
+    public Long getProductAttributeCategoryId() {
+        return productAttributeCategoryId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setProductAttributeCategoryId(Long id) {
+        this.productAttributeCategoryId = id;
     }
 
-    public String getName() {
-        return name;
+    public String getAttributeCategoryName() {
+        return attributeCategoryName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAttributeCategoryName(String name) {
+        this.attributeCategoryName = name;
     }
 
     public Integer getAttributeCount() {
@@ -54,8 +54,8 @@ public class PmsProductAttributeCategory implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", name=").append(name);
+        sb.append(", productAttributeCategoryId=").append(productAttributeCategoryId);
+        sb.append(", attributeCategoryName=").append(attributeCategoryName);
         sb.append(", attributeCount=").append(attributeCount);
         sb.append(", paramCount=").append(paramCount);
         sb.append(", serialVersionUID=").append(serialVersionUID);

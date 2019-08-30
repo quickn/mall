@@ -30,8 +30,8 @@ public class CmsSubjectController {
     @RequestMapping(value = "/listAll", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<CmsSubject>> listAll() {
-        List<CmsSubject> subjectList = subjectService.listAll();
-        return CommonResult.success(subjectList);
+       // List<CmsSubject> subjectList = subjectService.listAll();
+        return CommonResult.success(null);
     }
 
     @ApiOperation(value = "根据专题名称分页获取专题")

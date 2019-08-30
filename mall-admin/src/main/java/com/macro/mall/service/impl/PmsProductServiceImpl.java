@@ -112,8 +112,8 @@ public class PmsProductServiceImpl implements PmsProductService {
     }
 
     @Override
-    public PmsProductResult getUpdateInfo(Long id) {
-        return productDao.getUpdateInfo(id);
+    public PmsProductResult getUpdateInfo(Long productId) {
+        return productDao.getUpdateInfo(productId);
     }
 
     @Override
@@ -302,7 +302,7 @@ public class PmsProductServiceImpl implements PmsProductService {
         List<PmsSkuStock> skuStockList = productParam.getSkuStockList();
         if (!CollectionUtils.isEmpty(skuStockList)) {
             for (PmsSkuStock skuStock : skuStockList) {
-                skuStock.setId(null);
+                skuStock.setSkuStockId(null);
                 skuStock.setProductId(productId);
             }
             skuStockDao.insertList(skuStockList);

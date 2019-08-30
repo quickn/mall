@@ -460,8 +460,8 @@
   <update id="updateByExampleSelective" parameterType="map">
     update pms_product
     <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="record.productId != null">
+        productId = #{record.productId,jdbcType=BIGINT},
       </if>
       <if test="record.brandId != null">
         brandId = #{record.brandId,jdbcType=BIGINT},
@@ -475,8 +475,8 @@
       <if test="record.productAttributeCategoryId != null">
         productAttributeCategoryId = #{record.productAttributeCategoryId,jdbcType=BIGINT},
       </if>
-      <if test="record.name != null">
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="record.productName != null">
+        productName = #{record.productName,jdbcType=VARCHAR},
       </if>
       <if test="record.pic != null">
         pic = #{record.pic,jdbcType=VARCHAR},
@@ -505,21 +505,6 @@
       <if test="record.sale != null">
         sale = #{record.jdbcType=INTEGER},
       </if>
-      <if test="record.price != null">
-        price = #{record.price,jdbcType=DECIMAL},
-      </if>
-      <if test="record.promotionPrice != null">
-        promotion_price = #{record.promotionPrice,jdbcType=DECIMAL},
-      </if>
-      <if test="record.giftGrowth != null">
-        gift_growth = #{record.giftGrowth,jdbcType=INTEGER},
-      </if>
-      <if test="record.giftPoint != null">
-        gift_point = #{record.giftPoint,jdbcType=INTEGER},
-      </if>
-      <if test="record.usePointLimit != null">
-        use_point_limit = #{record.usePointLimit,jdbcType=INTEGER},
-      </if>
       <if test="record.subTitle != null">
         subTitle = #{record.subTitle,jdbcType=VARCHAR},
       </if>
@@ -528,9 +513,6 @@
       </if>
       <if test="record.stock != null">
         stock = #{record.stock,jdbcType=INTEGER},
-      </if>
-      <if test="record.lowStock != null">
-        low_stock = #{record.lowStock,jdbcType=INTEGER},
       </if>
       <if test="record.unit != null">
         unit = #{record.unit,jdbcType=VARCHAR},
@@ -553,38 +535,11 @@
       <if test="record.albumPics != null">
         albumPics = #{record.albumPics,jdbcType=VARCHAR},
       </if>
-      <if test="record.detailTitle != null">
-        detail_title = #{record.detailTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="record.promotionStartTime != null">
-        promotion_start_time = #{record.promotionStartTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.promotionEndTime != null">
-        promotion_end_time = #{record.promotionEndTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.promotionPerLimit != null">
-        promotion_per_limit = #{record.promotionPerLimit,jdbcType=INTEGER},
-      </if>
-      <if test="record.promotionType != null">
-        promotionType = #{record.promotionType,jdbcType=INTEGER},
-      </if>
       <if test="record.brandName != null">
         brandName = #{record.brandName,jdbcType=VARCHAR},
       </if>
       <if test="record.productCategoryName != null">
         productCategoryName = #{record.productCategoryName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.description != null">
-        description = #{record.description,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="record.detailDesc != null">
-        detail_desc = #{record.detailDesc,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="record.detailHtml != null">
-        detail_html = #{record.detailHtml,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="record.detailMobileHtml != null">
-        detail_mobile_html = #{record.detailMobileHtml,jdbcType=LONGVARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -598,7 +553,7 @@
       productCategoryId = #{record.productCategoryId,jdbcType=BIGINT},
       feightTemplateId = #{record.feightTemplateId,jdbcType=BIGINT},
       productAttributeCategoryId = #{record.productAttributeCategoryId,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
+      productName = #{record.productName,jdbcType=VARCHAR},
       pic = #{record.pic,jdbcType=VARCHAR},
       product_sn = #{record.productSn,jdbcType=VARCHAR},
       deleteStatus = #{record.deleteStatus,jdbcType=INTEGER},

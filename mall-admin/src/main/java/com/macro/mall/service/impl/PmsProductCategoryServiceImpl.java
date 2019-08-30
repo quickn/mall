@@ -60,7 +60,7 @@ public class PmsProductCategoryServiceImpl implements PmsProductCategoryService 
         for (Long productAttrId : productAttributeIdList) {
             PmsProductCategoryAttributeRelation relation = new PmsProductCategoryAttributeRelation();
             relation.setProductAttributeId(productAttrId);
-            relation.setProductCategoryId(productCategoryId);
+            relation.setProductAttributeCategoryId(productCategoryId);
             relationList.add(relation);
         }
         productCategoryAttributeRelationDao.insertList(relationList);
